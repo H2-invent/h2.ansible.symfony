@@ -1,8 +1,6 @@
 ---
 - name: Run Webpack Update with NPM install
-  shell: chdir={{ansistrano_release_path.stdout}}
-    SYMFONY_ENV={{symfony_env}} APP_ENV={{symfony_env}} {{symfony_php_path}} {{symfony_console_path}} doctrine:migrations:migrate --no-interaction {{symfony_doctrine_options}}
+  shell: chdir={{ansistrano_release_path.stdout}} {{ symfony_npm_run_install_command }}
 
 - name: Run Webpack Update with NPM run build
-  shell: chdir={{ansistrano_release_path.stdout}}
-    SYMFONY_ENV={{symfony_env}} APP_ENV={{symfony_env}} {{symfony_php_path}} {{symfony_console_path}} doctrine:migrations:migrate --no-interaction {{symfony_doctrine_options}}
+  shell: chdir={{ansistrano_release_path.stdout}} {{ symfony_npm_run_build_command }}

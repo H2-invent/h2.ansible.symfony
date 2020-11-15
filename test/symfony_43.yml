@@ -16,4 +16,4 @@
     ansistrano_allow_anonymous_stats: false
 
   roles:
-    - cbrunnkvist.ansistrano-symfony-deploy
+    - h2.ansible.symfony

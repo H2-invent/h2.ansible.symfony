@@ -88,7 +88,7 @@ Database schema migrations can generally NOT be run in parallel across multiple 
 
 In order to get around the parallel exection, you can do the following:
 
-1. Specify your own `ansistrano_before_symlink_tasks_file`, perhaps with the one in this project as a template (look in cbrunnkvist.ansistrano-symfony-deploy/config/steps/).
+1. Specify your own `ansistrano_before_symlink_tasks_file`, perhaps with the one in this project as a template (look in h2.ansible.symfony/config/steps/).
 2. Pick one of the following approaches:
   - (a) Organize hosts into groups such that the task will run on only the _first_ host in some group:
     `when: groups['www-production'][0] == inventory_hostname`
@@ -99,7 +99,7 @@ Dependencies
 
 - [ansistrano.deploy](https://galaxy.ansible.com/ansistrano/deploy)
 
-Installing from the command line via `ansible-galaxy install cbrunnkvist.ansistrano-symfony-deploy` should pull down the external role as a dependency, so no extra step neccessary.
+Installing from the command line via a requirements.yml `src: git+git@github.com:H2-invent/h2.ansible.symfony.git` should pull down the external role as a dependency, so no extra step neccessary.
 
 Example playbook
 ----------------
@@ -116,7 +116,7 @@ Let's assume there is a `my-app-infrastructure/deploy.yml`:
     ansistrano_deploy_to: /home/app-user/my-project-deploy/
     ansistrano_before_symlink_tasks_file: "{{playbook_dir}}/config/app_specific_setup.yml"
   roles:
-    - cbrunnkvist.ansistrano-symfony-deploy
+    - h2.ansible.symfony
 ```
 
 This playbook should be executed like any other, i.e. `ansible-playbook -i some_hosts_file deploy.yml`.
