@@ -39,3 +39,10 @@
   when: symfony_run_mongodb_schema_update|bool
 
 - include_tasks: "{{ ansistrano_symfony_after_mongodb_tasks_file | default('steps/empty.yml') }}"
+
+- include_tasks: "{{ ansistrano_symfony_before_webpack_tasks_file | default('steps/empty.yml') }}"
+
+- import_tasks: "../../cbrunnkvist.ansistrano-symfony-deploy/config/steps/webpack.yml"
+  when: symfony_run_webpack_update|bool
+
+- include_tasks: "{{ ansistrano_symfony_after_webpack_tasks_file | default('steps/empty.yml') }}"

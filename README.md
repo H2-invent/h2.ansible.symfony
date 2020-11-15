@@ -74,6 +74,9 @@ ansistrano_symfony_after_doctrine_tasks_file
 ansistrano_symfony_before_mongodb_tasks_file
 ansistrano_symfony_after_mongodb_tasks_file
 
+ansistrano_symfony_before_webpack_tasks_file
+ansistrano_symfony_after_webpack_tasks_file
+
 ```
 
 In addition to this, please also refer to the [list of variables used by ansistrano](https://github.com/ansistrano/deploy#role-variables).
@@ -127,7 +130,6 @@ MIT
 
 Author Information
 ------------------
-
 - ansistrano-symfony-deploy, written by Conny Brunnkvist <cbrunnkvist@gmail.com>
 - The underlying role is maintained by the `ansistrano-deploy` team
 - Some code was taken from/inspiried by the `symfony2-deploy` role by the Servergrove team
