@@ -25,7 +25,7 @@ symfony_npm_run_build_command: npm run build
 symfony_run_secure_check: true
 symfony_secure_check_path: "{{ ansistrano_deploy_to }}/security-checker.phar"
 symfony_composer_lock_path: "{{ ansistrano_deploy_to }}/composer.lock"
-symfony_secure_check_command: {{ symfony_php_path }} {{ symfony_secure_check_path }} security:check {{ symfony_composer_lock_path }}
+symfony_secure_check_command: "{{ symfony_php_path }} {{ symfony_secure_check_path }} security:check {{ symfony_composer_lock_path }}"
 
 symfony_create_env: true
 symfony_create_env_vars:
