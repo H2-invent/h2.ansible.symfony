@@ -19,7 +19,7 @@ symfony_cache_options: ''
 symfony_console_path: 'bin/console'
 
 symfony_run_webpack_update: true
-symfony_npm_run_install_command: nom install
+symfony_npm_run_install_command: npm install
 symfony_npm_run_build_command: npm run build
 
 symfony_run_secure_check: true
