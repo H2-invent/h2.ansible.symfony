@@ -22,11 +22,23 @@ symfony_run_webpack_update: true
 symfony_npm_run_install_command: nom install
 symfony_npm_run_build_command: npm run build
 
-
 symfony_run_secure_check: true
 symfony_secure_check_path: "{{ ansistrano_deploy_to }}/security-checker.phar"
 symfony_composer_lock_path: "{{ ansistrano_deploy_to }}/composer.lock"
 symfony_secure_check_command: {{ symfony_php_path }} {{ symfony_secure_check_path }} security:check {{ symfony_composer_lock_path }}
+
+symfony_create_env: true
+symfony_create_env_vars:
+  - name:
+    value:
+    comment:
+    activ: true
+
+symfony_create_env_vars_host: []
+#  - name:
+#    value:
+#    comment:
+
 
 ###############################################################################
 # Enable the schema/migration tasks ONLY if you have 1 and only 1 host in your
