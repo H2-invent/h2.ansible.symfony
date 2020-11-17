@@ -1,0 +1,5 @@
+---
+- name: Create Encryption Key File
+  template:
+    src: encryption.j2
+    dest: {{ symfony_create_encryption_key_path }}

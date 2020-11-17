@@ -28,17 +28,21 @@ symfony_composer_lock_path: "{{ ansistrano_deploy_to }}/composer.lock"
 symfony_secure_check_command: "{{ symfony_php_path }} {{ symfony_secure_check_path }} security:check {{ symfony_composer_lock_path }}"
 
 symfony_create_env: true
-symfony_create_env_vars:
-  - name:
-    value:
-    comment:
-    activ: true
+symfony_create_env_path: "{{ansistrano_deploy_to}}/.env.local" # Path and name of the .env or .env.local file
+symfony_create_env_vars: []
+#  - name:
+#    value:
+#    comment:
+#    activ: true
 
 symfony_create_env_vars_host: []
 #  - name:
 #    value:
 #    comment:
 
+symfony_create_encryption: false
+symfony_create_encryption_key: ''
+symfony_create_encryption_key_path: "{{ansistrano_deploy_to}}/.key" # Path and name of the key or pem file
 
 ###############################################################################
 # Enable the schema/migration tasks ONLY if you have 1 and only 1 host in your
