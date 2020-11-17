@@ -23,28 +23,52 @@ The `defaults` vars declared in this module:
 
 ```YAML
 symfony_env: prod
+symfony_console_path: 'bin/console'
 symfony_php_path: php # The PHP executable to use for all command line tasks
 
-symfony_console_path: 'app/console' # If using Symfony 3+ this should be 'bin/console'
-
 symfony_run_composer: true
-symfony_composer_path: "{{ ansistrano_deploy_to }}/composer.phar"
+symfony_composer_path: "{{ ansistrano_release_path.stdout }}/composer.phar"
 symfony_composer_options: '--no-dev --optimize-autoloader --no-interaction'
 symfony_composer_self_update: true # Always attempt a composer self-update
-symfony_composer_version: 1.10.1 # Install specific composer version. If this variable is not set the latest stable version is installed
 
 symfony_run_assets_install: true
 symfony_assets_options: '--no-interaction'
 
-symfony_run_assetic_dump: true
+symfony_run_assetic_dump: false
 symfony_assetic_options: '--no-interaction'
+
+symfony_create_env: true
+symfony_create_env_path: "{{ansistrano_release_path.stdout}}/.env.local" # Path and name of the .env or .env.local file
+symfony_create_env_vars: []
+#  - name:
+#    value:
+#    comment:
+#    activ: true
+
+symfony_create_env_vars_host: []
+#  - name:
+#    value:
+#    comment:
+
+symfony_create_encryption: false
+symfony_create_encryption_key: ''
+symfony_create_encryption_key_path: "{{ansistrano_release_path.stdout}}/.Halite" # Path and name of the key, pem or Halite file
 
 symfony_run_cache_clear_and_warmup: true
 symfony_cache_options: ''
 
-###############################################################################
+symfony_run_webpack_update: true
+symfony_npm_run_install_command: npm install
+symfony_npm_run_build_command: npm run build
+
+symfony_run_secure_check: true
+symfony_secure_check_path: "{{ ansistrano_release_path.stdout }}/security-checker.phar"
+symfony_composer_lock_path: "{{ ansistrano_release_path.stdout }}/composer.lock"
+symfony_secure_check_command: "{{ symfony_php_path }} {{ symfony_secure_check_path }} security:check {{ symfony_composer_lock_path }}"
+
 symfony_run_doctrine_migrations: false
 symfony_doctrine_options: '--no-interaction'
+symfony_run_doctrine_migration_once: true
 
 symfony_run_mongodb_schema_update: false
 symfony_mongodb_options: ''
@@ -58,6 +82,12 @@ This role supports ansistrano like hooks before and after every task
 ```YAML
 ansistrano_symfony_before_composer_tasks_file
 ansistrano_symfony_after_composer_tasks_file
+
+ansistrano_symfony_before_env_tasks_file
+ansistrano_symfony_after_env_tasks_file
+
+ansistrano_symfony_before_encryption_tasks_file
+ansistrano_symfony_after_encryption_tasks_file
 
 ansistrano_symfony_before_assets_tasks_file
 ansistrano_symfony_after_assets_tasks_file
@@ -77,6 +107,8 @@ ansistrano_symfony_after_mongodb_tasks_file
 ansistrano_symfony_before_webpack_tasks_file
 ansistrano_symfony_after_webpack_tasks_file
 
+ansistrano_symfony_before_secure_tasks_file
+ansistrano_symfony_after_secure_tasks_file
 ```
 
 In addition to this, please also refer to the [list of variables used by ansistrano](https://github.com/ansistrano/deploy#role-variables).
@@ -112,8 +144,9 @@ Let's assume there is a `my-app-infrastructure/deploy.yml`:
 - hosts: all
   gather_facts: false
   vars:
-    ansistrano_deploy_from: ../my-project-checkout
     ansistrano_deploy_to: /home/app-user/my-project-deploy/
+    ansistrano_deploy_via: "git"
+    ansistrano_git_repo: "https://github.com/H2-invent/open-datenschutzcenter.git"
     ansistrano_before_symlink_tasks_file: "{{playbook_dir}}/config/app_specific_setup.yml"
   roles:
     - h2.ansible.symfony
