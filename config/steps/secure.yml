@@ -1,13 +1,13 @@
 ---
 - name: Check for security-checker.phar
-  stat: path={{symfony_secure_check_path}}
+  stat: "path={{symfony_secure_check_path}}"
   register: security_checker_file
 
 - name: Check for composer.lock
-  stat: path={{symfony_composer_lock_path}}
+  stat: "path={{symfony_composer_lock_path}}"
   register: composer_lock_file
 
 - name: Run Secure Check from composer
-  shell: {{ symfony_secure_check_command }}
+  shell: "{{ symfony_secure_check_command }}"
   when: security_checker_file.stat.exists and composer_lock_file.stat.exists
   register: symfony_security_check_result
