@@ -3,7 +3,7 @@ symfony_env: prod
 symfony_php_path: php # The PHP executable to use for all command line tasks
 
 symfony_run_composer: true
-symfony_composer_path: "{{ ansistrano_deploy_to }}/composer.phar"
+symfony_composer_path: "{{ ansistrano_release_path.stdout }}/composer.phar"
 symfony_composer_options: '--no-dev --optimize-autoloader --no-interaction'
 symfony_composer_self_update: true # Always attempt a composer self-update
 
@@ -28,7 +28,7 @@ symfony_composer_lock_path: "{{ ansistrano_release_path.stdout }}/composer.lock"
 symfony_secure_check_command: "{{ symfony_php_path }} {{ symfony_secure_check_path }} security:check {{ symfony_composer_lock_path }}"
 
 symfony_create_env: true
-symfony_create_env_path: "{{ansistrano_deploy_to}}/.env.local" # Path and name of the .env or .env.local file
+symfony_create_env_path: "{{ansistrano_release_path.stdout}}/.env.local" # Path and name of the .env or .env.local file
 symfony_create_env_vars: []
 #  - name:
 #    value:
