@@ -1,6 +1,6 @@
 ---
-- name: Run Webpack Update with NPM install
+- name: H2 INVENT | Run Webpack Update with NPM install
   shell: "chdir={{ansistrano_release_path.stdout}} {{ symfony_npm_run_install_command }}"
 
-- name: Run Webpack Update with NPM run build
+- name: H2 INVENT | Run Webpack Update with NPM run build
   shell: "chdir={{ansistrano_release_path.stdout}} {{ symfony_npm_run_build_command }}"

@@ -42,7 +42,7 @@ symfony_create_env_vars_host: []
 
 symfony_create_encryption: false
 symfony_create_encryption_key: ''
-symfony_create_encryption_key_path: "{{ansistrano_deploy_to}}/.key" # Path and name of the key or pem file
+symfony_create_encryption_key_path: "{{ansistrano_release_path.stdout}}/.key" # Path and name of the key or pem file
 
 ###############################################################################
 # Enable the schema/migration tasks ONLY if you have 1 and only 1 host in your

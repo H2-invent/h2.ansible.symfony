@@ -1,5 +1,5 @@
 ---
-- name: Make way for shared paths / resources shared across releases
+- name: H2 INVENT | Make way for shared paths / resources shared across releases
   file:
     state=absent
     path={{ansistrano_release_path.stdout}}/{{item}}

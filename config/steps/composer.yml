@@ -1,15 +1,19 @@
 ---
-- name: Check for composer.phar
+- name: H2 INVENT | Check for composer.phar
   stat: path={{symfony_composer_path}}
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}"
   register: composer_file
 
-- name: Run composer self-update
+- name: H2 INVENT | Run composer self-update
   shell: "{{symfony_composer_path}} selfupdate --no-interaction"
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}"
   when: composer_file.stat.exists and symfony_composer_self_update|bool
   register: composer_self_update_result
   changed_when: composer_self_update_result.stderr is search('Updating')
 
-- name: Run composer install.
+- name: H2 INVENT | Run composer install.
   command: "{{symfony_php_path}} {{symfony_composer_path}} install"
   args:
     chdir: "{{ ansistrano_release_path.stdout }}"
