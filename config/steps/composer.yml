@@ -10,4 +10,6 @@
   changed_when: composer_self_update_result.stderr is search('Updating')
 
 - name: H2 INVENT | Run composer install.
-  command: "{{symfony_php_path}} {{symfony_composer_path}} install"
+  command: "{{symfony_php_path}} {{symfony_composer_path}} install {{symfony_composer_options}}"
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}"
