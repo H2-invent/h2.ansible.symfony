@@ -1,8 +1,8 @@
 ---
-- name: H2 INVENT | Clear cache
+- name: H2 INVENT | CACHE | Clear cache
   shell: chdir={{ansistrano_release_path.stdout}}
     SYMFONY_ENV={{symfony_env}} APP_ENV={{symfony_env}} {{symfony_php_path}} {{symfony_console_path}} cache:clear --no-warmup {{symfony_cache_options}}
 
-- name: H2 INVENT | Warm-up cache
+- name: H2 INVENT | CACHE | Warm-up cache
   shell: chdir={{ansistrano_release_path.stdout}}
     SYMFONY_ENV={{symfony_env}} APP_ENV={{symfony_env}} {{symfony_php_path}} {{symfony_console_path}} cache:warmup {{symfony_cache_options}}

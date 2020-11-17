@@ -1,5 +1,5 @@
 ---
-- name: H2 INVENT | Run Doctrine migrations
+- name: H2 INVENT | DOCTRINE | Run Doctrine migrations
   shell: chdir={{ansistrano_release_path.stdout}}
     SYMFONY_ENV={{symfony_env}} APP_ENV={{symfony_env}} {{symfony_php_path}} {{symfony_console_path}} doctrine:migrations:migrate --no-interaction {{symfony_doctrine_options}}
   run_once: '{{ symfony_run_doctrine_migration_once | bool }}'

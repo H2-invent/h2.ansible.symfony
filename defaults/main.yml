@@ -11,7 +11,7 @@ symfony_composer_self_update: true # Always attempt a composer self-update
 symfony_run_assets_install: true
 symfony_assets_options: '--no-interaction'
 
-symfony_run_assetic_dump: true
+symfony_run_assetic_dump: false
 symfony_assetic_options: '--no-interaction'
 
 symfony_create_env: true
@@ -29,7 +29,7 @@ symfony_create_env_vars_host: []
 
 symfony_create_encryption: false
 symfony_create_encryption_key: ''
-symfony_create_encryption_key_path: "{{ansistrano_release_path.stdout}}/.key" # Path and name of the key or pem file
+symfony_create_encryption_key_path: "{{ansistrano_release_path.stdout}}/.Halite" # Path and name of the key, pem or Halite file
 
 symfony_run_cache_clear_and_warmup: true
 symfony_cache_options: ''
@@ -43,11 +43,6 @@ symfony_secure_check_path: "{{ ansistrano_release_path.stdout }}/security-checke
 symfony_composer_lock_path: "{{ ansistrano_release_path.stdout }}/composer.lock"
 symfony_secure_check_command: "{{ symfony_php_path }} {{ symfony_secure_check_path }} security:check {{ symfony_composer_lock_path }}"
 
-###############################################################################
-# Enable the schema/migration tasks ONLY if you have 1 and only 1 host in your
-# inventory, since running migrations in parallel might lead to data corruption.
-# (see README.md for more details)
-###############################################################################
 symfony_run_doctrine_migrations: false
 symfony_doctrine_options: '--no-interaction'
 symfony_run_doctrine_migration_once: true
