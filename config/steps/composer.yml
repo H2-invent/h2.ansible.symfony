@@ -18,6 +18,6 @@
   when: symfony_composer_version is defined
 
 - name: Run composer install
-  shell: "{{symfony_php_path}} {{symfony_composer_path}} install {{symfony_composer_options}}"
+  shell: "chdir={{ansistrano_release_path.stdout}} {{symfony_php_path}} {{symfony_composer_path}} install {{symfony_composer_options}}"
   register: composer_install_result
   changed_when: composer_install_result.stderr is search('- \w+ing ')
