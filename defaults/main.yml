@@ -1,5 +1,6 @@
 ---
 symfony_env: prod
+symfony_console_path: 'bin/console'
 symfony_php_path: php # The PHP executable to use for all command line tasks
 
 symfony_run_composer: true
@@ -12,20 +13,6 @@ symfony_assets_options: '--no-interaction'
 
 symfony_run_assetic_dump: true
 symfony_assetic_options: '--no-interaction'
-
-symfony_run_cache_clear_and_warmup: true
-symfony_cache_options: ''
-
-symfony_console_path: 'bin/console'
-
-symfony_run_webpack_update: true
-symfony_npm_run_install_command: npm install
-symfony_npm_run_build_command: npm run build
-
-symfony_run_secure_check: true
-symfony_secure_check_path: "{{ ansistrano_release_path.stdout }}/security-checker.phar"
-symfony_composer_lock_path: "{{ ansistrano_release_path.stdout }}/composer.lock"
-symfony_secure_check_command: "{{ symfony_php_path }} {{ symfony_secure_check_path }} security:check {{ symfony_composer_lock_path }}"
 
 symfony_create_env: true
 symfony_create_env_path: "{{ansistrano_release_path.stdout}}/.env.local" # Path and name of the .env or .env.local file
@@ -43,6 +30,18 @@ symfony_create_env_vars_host: []
 symfony_create_encryption: false
 symfony_create_encryption_key: ''
 symfony_create_encryption_key_path: "{{ansistrano_release_path.stdout}}/.key" # Path and name of the key or pem file
+
+symfony_run_cache_clear_and_warmup: true
+symfony_cache_options: ''
+
+symfony_run_webpack_update: true
+symfony_npm_run_install_command: npm install
+symfony_npm_run_build_command: npm run build
+
+symfony_run_secure_check: true
+symfony_secure_check_path: "{{ ansistrano_release_path.stdout }}/security-checker.phar"
+symfony_composer_lock_path: "{{ ansistrano_release_path.stdout }}/composer.lock"
+symfony_secure_check_command: "{{ symfony_php_path }} {{ symfony_secure_check_path }} security:check {{ symfony_composer_lock_path }}"
 
 ###############################################################################
 # Enable the schema/migration tasks ONLY if you have 1 and only 1 host in your
