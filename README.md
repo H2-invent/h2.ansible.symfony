@@ -1,7 +1,14 @@
 ansistrano-symfony-deploy
 =========
+Extention by h2 invent
+------------
+A larger set of Symfony deployment activities in combination with ansitrano deploy playbook. In this playbook, the extra steps are included in the automated deployment:
+* Create an .env.local
+* Start encryption
+* Use Webpack with encore for Symfony
+* Make a security Check from Composer
 
-[![Build Status](https://travis-ci.org/cbrunnkvist/ansistrano-symfony-deploy.svg?branch=master)](https://travis-ci.org/cbrunnkvist/ansistrano-symfony-deploy)
+This role included an run_once as default vaule in doctrine migration. It is important to enable this feature when the Symfony Application runs in a LAMP cluster with a centralized database server or cluster.
 
 A set of [Ansible](http://docs.ansible.com/) tasks for deploying PHP applications developed using the Symfony framework (incl. flex) onto *nix servers in a "Capistrano" fashion (releases, shared, current->releases/X).
 
