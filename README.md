@@ -10,6 +10,9 @@ A larger set of Symfony deployment activities in combination with ansitrano depl
 
 This role included an run_once as default vaule in doctrine migration. It is important to enable this feature when the Symfony Application runs in a LAMP cluster with a centralized database server or cluster.
 
+#### IMPORTANT
+To securely store the env variables, it is usefull to create ansible-vault file with all the .env parameters. Do not store env and encryption key paramters in plain text on git or somewhere else.
+
 A set of [Ansible](http://docs.ansible.com/) tasks for deploying PHP applications developed using the Symfony framework (incl. flex) onto *nix servers in a "Capistrano" fashion (releases, shared, current->releases/X).
 
 This role is more or less just a collection of the most common post-installation setup tasks (i.e. getting a Composer executable, installing dependencies and autoloader, perform cache warming, deploy migrations etc). It does not itself deal with setting up the directory structures or getting files onto your servers - that part is handled by the more generic `ansistrano-deploy` role.
