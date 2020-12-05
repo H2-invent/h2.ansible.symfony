@@ -35,7 +35,7 @@ symfony_run_cache_clear_and_warmup: true
 symfony_cache_options: ''
 
 symfony_run_webpack_update: true
-symfony_npm_run_install_command: npm install
+symfony_npm_run_install_command: sudo npm install
 symfony_npm_run_build_command: npm run build
 
 symfony_run_secure_check: true
