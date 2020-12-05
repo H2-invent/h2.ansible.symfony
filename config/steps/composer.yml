@@ -3,6 +3,12 @@
   stat: path={{symfony_composer_path}}
   register: composer_file
 
+- name: H2 INVENT | COMPOSER | remove cache path
+  file:
+    path: "{{ symfony_composer_cache_path }}"
+    state: absent
+  when: symfony_composer_cache_clear|bool
+
 - name: H2 INVENT | COMPOSER | Run composer self-update
   command: "{{symfony_php_path}} {{symfony_composer_path}} selfupdate --no-interaction"
   when: composer_file.stat.exists and symfony_composer_self_update|bool
