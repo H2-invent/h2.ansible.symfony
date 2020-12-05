@@ -67,3 +67,10 @@
   when: symfony_run_secure_check|bool
 
 - include_tasks: "{{ ansistrano_symfony_after_secure_tasks_file | default('steps/empty.yml') }}"
+
+- include_tasks: "{{ ansistrano_symfony_before_secure_tasks_file | default('steps/empty.yml') }}"
+
+- import_tasks: "../../h2.ansible.symfony/config/steps/options.yml"
+  when: symfony_run_extra_options|bool
+
+- include_tasks: "{{ ansistrano_symfony_after_secure_tasks_file | default('steps/empty.yml') }}"

@@ -51,3 +51,6 @@ symfony_run_doctrine_migration_once: true
 
 symfony_run_mongodb_schema_update: false
 symfony_mongodb_options: ''
+
+symfony_run_extra_options: true
+symfony_npm_extra_options_commands: []
