@@ -1,3 +1,10 @@
+- include_tasks: "{{ ansistrano_symfony_before_env_tasks_file | default('steps/empty.yml') }}"
+
+- import_tasks: "../../h2.ansible.symfony/config/steps/env.yml"
+  when: symfony_create_env|bool
+
+- include_tasks: "{{ ansistrano_symfony_after_env_tasks_file | default('steps/empty.yml') }}"
+
 - include_tasks: "{{ ansistrano_symfony_before_composer_tasks_file | default('steps/empty.yml') }}"
 
 - import_tasks: "../../h2.ansible.symfony/config/steps/composer.yml"
@@ -18,13 +25,6 @@
   when: symfony_run_assetic_dump|bool
 
 - include_tasks: "{{ ansistrano_symfony_after_assetic_tasks_file | default('steps/empty.yml') }}"
-
-- include_tasks: "{{ ansistrano_symfony_before_env_tasks_file | default('steps/empty.yml') }}"
-
-- import_tasks: "../../h2.ansible.symfony/config/steps/env.yml"
-  when: symfony_create_env|bool
-
-- include_tasks: "{{ ansistrano_symfony_after_env_tasks_file | default('steps/empty.yml') }}"
 
 - include_tasks: "{{ ansistrano_symfony_before_encryption_tasks_file | default('steps/empty.yml') }}"
 
