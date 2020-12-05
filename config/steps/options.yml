@@ -1,6 +1,6 @@
 # This file is intentionally left empty and it is used in those Capistrano flow steps
 # where you don't need to execute any custom tasks
 
-- name: H2 INVENT | WEBPACK  Run Webpack Update with NPM install
+- name: H2 INVENT | OPTIONS Run different tasks via shell command
   shell: "chdir={{ansistrano_release_path.stdout}} {{ item }}"
   with_items: "{{ symfony_npm_extra_options_commands }}"
