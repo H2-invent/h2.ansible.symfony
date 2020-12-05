@@ -4,4 +4,3 @@
 
 - name: H2 INVENT | Run Webpack Update with NPM run build
   shell: "chdir={{ansistrano_release_path.stdout}} {{ symfony_npm_run_build_command }}"
-  become: true
