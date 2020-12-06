@@ -54,3 +54,6 @@ symfony_mongodb_options: ''
 
 symfony_run_extra_options: true
 symfony_npm_extra_options_commands: []
+
+symfony_create_folder_symlink: false
+symfony_create_folder_symlink_path: []

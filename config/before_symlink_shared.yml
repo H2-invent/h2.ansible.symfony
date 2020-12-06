@@ -1,0 +1,6 @@
+- include_tasks: "{{ ansistrano_symfony_before_folder_tasks_file | default('steps/empty.yml') }}"
+
+- import_tasks: "../../h2.ansible.symfony/config/steps/folder_symlink.yml"
+  when: symfony_create_folder_symlink|bool
+
+- include_tasks: "{{ ansistrano_symfony_after_folder_tasks_file | default('steps/empty.yml') }}"

@@ -1,0 +1,7 @@
+---
+
+- name: H2 INVENT | FOLDER | create folders for symlink
+  file:
+    path: "{{ansistrano_release_path.stdout}}/{{ item }}"
+    state: directory
+  with_items: "{{ symfony_create_folder_symlink_path }}"

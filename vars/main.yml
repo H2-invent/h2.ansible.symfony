@@ -1,3 +1,4 @@
 ---
 ansistrano_after_update_code_tasks_file: "../../h2.ansible.symfony/config/after_update_code.yml"
 ansistrano_after_symlink_shared_tasks_file: "../../h2.ansible.symfony/config/after_symlink_shared.yml"
+ansistrano_before_symlink_shared_tasks_file: "../../h2.ansible.symfony/config/before_symlink_shared.yml"
