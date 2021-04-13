@@ -5,12 +5,14 @@
 
 - include_tasks: "{{ ansistrano_symfony_after_env_tasks_file | default('steps/empty.yml') }}"
 
+
 - include_tasks: "{{ ansistrano_symfony_before_composer_tasks_file | default('steps/empty.yml') }}"
 
 - import_tasks: "../../h2.ansible.symfony/config/steps/composer.yml"
   when: symfony_run_composer|bool
 
 - include_tasks: "{{ ansistrano_symfony_after_composer_tasks_file | default('steps/empty.yml') }}"
+
 
 - include_tasks: "{{ ansistrano_symfony_before_assets_tasks_file | default('steps/empty.yml') }}"
 
@@ -19,12 +21,14 @@
 
 - include_tasks: "{{ ansistrano_symfony_after_assets_tasks_file | default('steps/empty.yml') }}"
 
+
 - include_tasks: "{{ ansistrano_symfony_before_assetic_tasks_file | default('steps/empty.yml') }}"
 
 - import_tasks: "../../h2.ansible.symfony/config/steps/assetic.yml"
   when: symfony_run_assetic_dump|bool
 
 - include_tasks: "{{ ansistrano_symfony_after_assetic_tasks_file | default('steps/empty.yml') }}"
+
 
 - include_tasks: "{{ ansistrano_symfony_before_encryption_tasks_file | default('steps/empty.yml') }}"
 
@@ -33,6 +37,7 @@
 
 - include_tasks: "{{ ansistrano_symfony_after_encryption_tasks_file | default('steps/empty.yml') }}"
 
+
 - include_tasks: "{{ ansistrano_symfony_before_cache_tasks_file | default('steps/empty.yml') }}"
 
 - import_tasks: "../../h2.ansible.symfony/config/steps/cache.yml"
@@ -40,19 +45,6 @@
 
 - include_tasks: "{{ ansistrano_symfony_after_cache_tasks_file | default('steps/empty.yml') }}"
 
-- include_tasks: "{{ ansistrano_symfony_before_doctrine_tasks_file | default('steps/empty.yml') }}"
-
-- import_tasks: "../../h2.ansible.symfony/config/steps/doctrine.yml"
-  when: symfony_run_doctrine_migrations|bool
-
-- include_tasks: "{{ ansistrano_symfony_after_doctrine_tasks_file | default('steps/empty.yml') }}"
-
-- include_tasks: "{{ ansistrano_symfony_before_mongodb_tasks_file | default('steps/empty.yml') }}"
-
-- import_tasks: "../../h2.ansible.symfony/config/steps/mongodb.yml"
-  when: symfony_run_mongodb_schema_update|bool
-
-- include_tasks: "{{ ansistrano_symfony_after_mongodb_tasks_file | default('steps/empty.yml') }}"
 
 - include_tasks: "{{ ansistrano_symfony_before_webpack_tasks_file | default('steps/empty.yml') }}"
 
@@ -61,12 +53,6 @@
 
 - include_tasks: "{{ ansistrano_symfony_after_webpack_tasks_file | default('steps/empty.yml') }}"
 
-- include_tasks: "{{ ansistrano_symfony_before_secure_tasks_file | default('steps/empty.yml') }}"
-
-- import_tasks: "../../h2.ansible.symfony/config/steps/secure.yml"
-  when: symfony_run_secure_check|bool
-
-- include_tasks: "{{ ansistrano_symfony_after_secure_tasks_file | default('steps/empty.yml') }}"
 
 - include_tasks: "{{ ansistrano_symfony_before_secure_tasks_file | default('steps/empty.yml') }}"
 
@@ -74,3 +60,11 @@
   when: symfony_run_extra_options|bool
 
 - include_tasks: "{{ ansistrano_symfony_after_secure_tasks_file | default('steps/empty.yml') }}"
+
+
+- include_tasks: "{{ ansistrano_symfony_before_doctrine_tasks_file | default('steps/empty.yml') }}"
+
+- import_tasks: "../../h2.ansible.symfony/config/steps/doctrine.yml"
+  when: symfony_run_doctrine_migrations|bool
+
+- include_tasks: "{{ ansistrano_symfony_after_doctrine_tasks_file | default('steps/empty.yml') }}"

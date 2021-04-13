@@ -40,20 +40,16 @@ symfony_run_webpack_update: true
 symfony_npm_run_install_command: sudo npm install
 symfony_npm_run_build_command: npm run build
 
-symfony_run_secure_check: true
-symfony_secure_check_path: "{{ ansistrano_release_path.stdout }}/security-checker.phar"
-symfony_composer_lock_path: "{{ ansistrano_release_path.stdout }}/composer.lock"
-symfony_secure_check_command: "{{ symfony_php_path }} {{ symfony_secure_check_path }} security:check {{ symfony_composer_lock_path }}"
+symfony_run_extra_options: true
+symfony_npm_extra_options_commands: []
 
 symfony_run_doctrine_migrations: false
 symfony_doctrine_options: '--no-interaction'
 symfony_run_doctrine_migration_once: true
-
-symfony_run_mongodb_schema_update: false
-symfony_mongodb_options: ''
-
-symfony_run_extra_options: true
-symfony_npm_extra_options_commands: []
+symfony_doctrine_dump_db:
+  name:
+  user:
+  password:
 
 symfony_create_folder_symlink: false
 symfony_create_folder_symlink_path: []
