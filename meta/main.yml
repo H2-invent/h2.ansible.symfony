@@ -1,6 +1,8 @@
 ---
 dependencies:
-  - ansistrano.deploy
+  - name: ansible-role-deploy
+    src: git+ssh://git@de-nue-1001426-git01.h2.local:2222/Ansible/ansible-role-deploy.git
+    scm: git
 
 galaxy_info:
   author: Conny Brunnkvist
